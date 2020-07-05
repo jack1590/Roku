@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ProfileScreen" extends="Group">
+    <script type="text/brightscript" uri="profileScreen.brs" />
+    <script type="text/brightscript" uri="../common/app.brs" />
+    <children>
+    
+        <Label
+            id="questionLabel"
+            text = "¿Quién quiere ver Netflix?"
+            horizAlign = "center"
+            translation="[0,300]"/>
+
+        <PosterGrid 
+            id = "posterGrid" 
+            basePosterSize = "[ 220, 220 ]" 
+            caption1NumLines = "1" 
+            numColumns = "5" 
+            numRows = "1" 
+            itemSpacing = "[ 50, 0 ]"/>
+
+    </children>
+</component>

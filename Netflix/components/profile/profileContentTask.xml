@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="ProfileContentTask" extends="Task" >
+    <interface>
+    <field id = "content" type = "node" />
+  </interface>
+
+  <script type="text/brightscript" uri="profileContentTask.brs" />
+  <script type="text/brightscript" uri="../common/app.brs" />
+
+</component>
