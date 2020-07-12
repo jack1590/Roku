@@ -11,20 +11,22 @@ sub getContent()
     else
         createContent(content)
     end if
-    
-
-    
 
     m.top.content = content
 end sub
 
 sub createContentMockData(content)
     output = parseJson(ReadAsciiFile("pkg:/mock/profile.json"))
+    sectionNode = content.createChild("ContentNode")
+    sectionNode.setField("TITLE", "Profile")
     
-    for each item in output
-        itemcontent = content.createChild("ContentNode")
-        itemcontent.hdgridposterurl = item.poster
-        itemcontent.shortdescriptionline1 = item.name
+    for each item in output.profile.items
+        itemContent = sectionNode.createChild("ContentNode")
+        itemContent.id = item.id
+        itemContent.HDPosterUrl = item.poster
+        itemContent.title = item.name
+        itemContent.addField("isPosterSelected", "boolean", false)
+        itemContent.setField("isPosterSelected", true)
     end for
 end sub
 

@@ -10,13 +10,16 @@
             horizAlign = "center"
             translation="[0,300]"/>
 
-        <PosterGrid 
-            id = "posterGrid" 
-            basePosterSize = "[ 220, 220 ]" 
-            caption1NumLines = "1" 
-            numColumns = "5" 
+        <RowList
+            id="rowlist"
             numRows = "1" 
-            itemSpacing = "[ 50, 0 ]"/>
+            itemComponentName="ProfileItem"
+            itemSize="[ 1300, 410 ]"
+            rowItemSize = "[ [220, 410] ]"
+            rowItemSpacing = "[ [50, 0] ]"
+            showRowLabel = "[ false ]" 
+            rowFocusAnimationStyle = "floatingFocus"
+            drawFocusFeedback = "false"/>
 
     </children>
 </component>

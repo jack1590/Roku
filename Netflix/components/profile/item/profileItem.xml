@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ProfileItem" extends="Group">
+
+  <interface >
+      <field id="itemContent" type="node" onChange="onItemContentChanged"/>
+      <field id="focusPercent" type="float" onChange="onItemHasFocus"/>
+  </interface>
+
+  <script type="text/brightscript" uri="profileItem.brs" /> 
+  <script type="text/brightscript" uri="../../common/app.brs" />
+
+  <children>
+
+    <Poster 
+      id="focusedBackground" 
+      visible="false" 
+      translation = "[-10,-10]"
+      width = "260"
+      height= "260" />
+
+    <LayoutGroup 
+        id = "infoGroup"
+        layoutDirection = "vert"
+        horizAlignment= "center"
+        vertAlignment = "top"
+        translation = "[120,10]"
+        itemSpacings = "[20,50]">
+
+        <Poster 
+          id="itemPoster"
+          width="220"
+          height="220"/>
+
+        <Label
+            id="title"
+            vertAlign="bottom"/>
+            
+        <Poster
+            id="editImagePoster"
+            width="70"
+            height="70"/>
+    </LayoutGroup>
+
+    
+
+  </children>
+</component>
