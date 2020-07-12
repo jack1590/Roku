@@ -19,18 +19,20 @@ end sub
 
 sub onItemHasFocus()
     if m.top.focusPercent > 0.5 then 
-        if m.item.isPosterSelected then
-            m.focusedBackground.visible = true
-            m.editImagePoster.uri = m.app.design.images.editProfile
-            m.editImagePoster.visible = true
-        else
-            m.focusedBackground.visible = false
-            m.editImagePoster.uri = m.app.design.images.editProfileActive
-            m.editImagePoster.visible = true
-        end if
+       focusCustomElement()
     else 
         m.focusedBackground.visible = false
         m.editImagePoster.visible = false
         m.item.isPosterSelected = true
     end if
+end sub
+
+'----------------------------------------------------------------------
+' This function stablish if the image is the selected or the edit icon 
+'----------------------------------------------------------------------
+sub focusCustomElement()
+    m.focusedBackground.visible = m.item.isPosterSelected
+    m.editImagePoster.uri = m.app.design.images.editProfile
+    if not m.item.isPosterSelected then m.editImagePoster.uri = m.app.design.images.editProfileActive
+    m.editImagePoster.visible = true
 end sub

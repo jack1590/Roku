@@ -23,24 +23,28 @@ end sub
 
 sub showRowList()
     m.rowList.content = m.readPosterGridTask.content
-    axisX = ((m.app.uiResolution.width - m.rowList.boundingRect().width) / 2) + 50
+    ' calculate the space between ( left margin < - > rowlist < - >right margin)
+    axisX = ((m.app.uiResolution.width - 1300) / 2)
     m.rowList.translation = [axisX, 500]
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as Boolean
   handled = false
   if press then
-    itemFocused = m.rowList.rowItemFocused[1]
-    if key = "down" then
+    if key = "down" or key = "up" then
         handled = true
-        m.isPosterSelected = false
-        m.rowList.content.getChild(0).getChild(itemFocused).isPosterSelected = false
-    else if key = "up" then
-        handled = true
-        m.isPosterSelected = true
-        m.rowList.content.getChild(0).getChild(itemFocused).isPosterSelected = true
+        togleFocusElement()
     end if
   end if
   return handled
 end function
+
+'----------------------------------------------------------------------
+' Toggle the focus between poster and icon
+'----------------------------------------------------------------------
+sub togleFocusElement()
+    itemFocused = m.rowList.rowItemFocused[1]
+    m.isPosterSelected = not m.isPosterSelected
+    m.rowList.content.getChild(0).getChild(itemFocused).isPosterSelected = m.isPosterSelected
+end sub
 
