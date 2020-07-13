@@ -1,11 +1,28 @@
 sub init()
     m.app = App()
+    m.config = ProfileConfig()
     m.itemPoster = m.top.findNode("itemPoster")
     m.title = m.top.findNode("title")
     m.editImagePoster = m.top.findNode("editImagePoster")
     m.focusedBackground = m.top.findNode("focusedBackground")
+    m.layoutGroup = m.top.findNode("infoGroup")
 
+    setInitialValues()
+end sub
+
+sub setInitialValues()
     m.focusedBackground.uri = m.app.design.images.focusedProfile
+    m.focusedBackground.width = m.config.item.posterSize + 40
+    m.focusedBackground.height = m.config.item.posterSize + 40
+
+    m.layoutGroup.translation = m.config.item.layoutTranslation
+    m.layoutGroup.itemSpacings = m.config.item.layoutSpacings
+
+    m.itemPoster.width = m.config.item.posterSize
+    m.itemPoster.height = m.config.item.posterSize
+
+    m.editImagePoster.width = 70
+    m.editImagePoster.height = 70
     m.editImagePoster.uri = m.app.design.images.editProfile
     m.editImagePoster.visible = false
 end sub

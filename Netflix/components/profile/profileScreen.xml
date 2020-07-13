@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="ProfileScreen" extends="Group">
+    <script type="text/brightscript" uri="profileConfig.brs" />
     <script type="text/brightscript" uri="profileScreen.brs" />
     <script type="text/brightscript" uri="../common/app.brs" />
     <children>
@@ -14,9 +15,6 @@
             id="rowlist"
             numRows = "1" 
             itemComponentName="ProfileItem"
-            itemSize="[ 1300, 410 ]"
-            rowItemSize = "[ [220, 410] ]"
-            rowItemSpacing = "[ [50, 0] ]"
             showRowLabel = "[ false ]" 
             rowFocusAnimationStyle = "floatingFocus"
             drawFocusFeedback = "false"/>

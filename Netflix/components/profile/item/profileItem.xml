@@ -6,7 +6,8 @@
       <field id="focusPercent" type="float" onChange="onItemHasFocus"/>
   </interface>
 
-  <script type="text/brightscript" uri="profileItem.brs" /> 
+  <script type="text/brightscript" uri="profileItem.brs" />
+  <script type="text/brightscript" uri="../profileConfig.brs" /> 
   <script type="text/brightscript" uri="../../common/app.brs" />
 
   <children>
@@ -14,31 +15,23 @@
     <Poster 
       id="focusedBackground" 
       visible="false" 
-      translation = "[-10,-10]"
-      width = "260"
-      height= "260" />
+      translation = "[-10,-10]"/>
 
     <LayoutGroup 
         id = "infoGroup"
         layoutDirection = "vert"
         horizAlignment= "center"
-        vertAlignment = "top"
-        translation = "[120,10]"
-        itemSpacings = "[20,50]">
+        vertAlignment = "top">
 
         <Poster 
-          id="itemPoster"
-          width="220"
-          height="220"/>
+          id="itemPoster"/>
 
         <Label
             id="title"
             vertAlign="bottom"/>
             
         <Poster
-            id="editImagePoster"
-            width="70"
-            height="70"/>
+            id="editImagePoster"/>
     </LayoutGroup>
 
     

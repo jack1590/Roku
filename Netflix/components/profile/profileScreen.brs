@@ -1,5 +1,6 @@
 sub init()
     m.app = App()
+    m.config = ProfileConfig()
     m.label = m.top.findNode("questionLabel")
     m.rowList = m.top.findNode("rowlist")
     m.isPosterSelected = true
@@ -11,7 +12,11 @@ end sub
 sub setInitialValues()
     m.label.font = m.app.fonts.large
     m.label.width = m.app.uiResolution.width
-   
+
+    m.rowList.translation = [m.config.axisX, m.config.axisY]
+    m.rowList.itemSize = m.config.itemSize
+    m.rowList.rowItemSize = m.config.rowItemSize
+    m.rowList.rowItemSpacing = m.config.rowItemSpacing
     m.rowList.setFocus(true)
 end sub
 
@@ -23,9 +28,6 @@ end sub
 
 sub showRowList()
     m.rowList.content = m.readPosterGridTask.content
-    ' calculate the space between ( left margin < - > rowlist < - >right margin)
-    axisX = ((m.app.uiResolution.width - 1300) / 2)
-    m.rowList.translation = [axisX, 500]
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as Boolean
@@ -44,7 +46,7 @@ end function
 '----------------------------------------------------------------------
 sub togleFocusElement()
     itemFocused = m.rowList.rowItemFocused[1]
-    m.isPosterSelected = not m.isPosterSelected
-    m.rowList.content.getChild(0).getChild(itemFocused).isPosterSelected = m.isPosterSelected
+    isPosterSelected = m.rowList.content.getChild(0).getChild(itemFocused).isPosterSelected
+    m.rowList.content.getChild(0).getChild(itemFocused).isPosterSelected = not isPosterSelected
 end sub
 
