@@ -7,7 +7,6 @@
   </interface>
 
   <script type="text/brightscript" uri="profileItem.brs" />
-  <script type="text/brightscript" uri="../profileConfig.brs" /> 
   <script type="text/brightscript" uri="../../common/app.brs" />
 
   <children>
@@ -34,7 +33,5 @@
             id="editImagePoster"/>
     </LayoutGroup>
 
-    
-
-  </children>
+    </children>
 </component>

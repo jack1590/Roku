@@ -1,0 +1,45 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+
+<component name = "MenuItem" extends = "Group">
+
+  <interface >
+      <field id="itemContent" type="node" onChange="onItemContentChanged"/>
+      <field id="focusPercent" type="float" onChange="onItemHasFocus"/>
+      <field id="gridHasFocus" type="boolean" onChange="onGridHasFocus"/>
+  </interface>
+
+  <script type="text/brightscript" uri="menuItem.brs" />
+  <script type="text/brightscript" uri="../../common/app.brs" />
+
+  <children >
+
+    <Poster
+        id="icon" 
+        width="30"
+        height="30"
+        translation="[ 10, 0 ]"/>
+
+    <Label
+      id="title"
+      translation="[90, 0]"/>
+
+    <Animation
+      id="animation"
+      duration="0.17"
+      easeFunction="inOutQuad"> <!--inOutQuad-->
+      <Vector2DFieldInterpolator
+          id = "testVector2D"
+          key="[0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.3, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]"
+          keyValue="[ [-60, 0], [-50, 0], [-40, 0], [-30, 0], [-20, 0], [-10, 0], [5, 0], [10, 0], [15, 0], [25, 0], [35, 0], [45, 0], [55, 0], [65, 0], [75, 0], [85, 0], [90, 0] ]"
+          fieldToInterp="title.translation"   />
+
+    </Animation>
+
+    <Timer
+      id="testTimer"
+      repeat="false"
+    />
+
+  </children>
+
+</component>

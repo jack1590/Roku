@@ -4,5 +4,6 @@
     <script type="text/brightscript" uri="common/app.brs" />
     <children>
         <ProfileScreen id="profileScreen"/>
+        <PrincipalScreen id="principalScreen"/>
     </children>
 </component>

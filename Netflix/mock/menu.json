@@ -1,0 +1,44 @@
+[
+    {
+      "id": "71fb2c3e-be19-11ea-b3de-0242ac130004",
+      "poster": "pkg:/images/icons/search.png",
+      "title": "Búsqueda",
+      "duration": 0.01
+    },
+    {
+      "id": "acba13e4-be19-11ea-b3de-0242ac130004",
+      "poster": "pkg:/images/icons/home.png",
+      "title": "Inicio",
+      "duration": 0.02
+    },
+    {
+      "id": "acba13e4-be50-11ea-b3de-0242ac130004",
+      "poster": "pkg:/images/icons/play.png",
+      "title": "Ver ahora",
+      "duration": 0.03
+    },
+    {
+      "id": "acbh13e4-be19-11ea-b3de-0240ac140005",
+      "poster": "pkg:/images/icons/calendar.png",
+      "title": "Más recientes",
+      "duration": 0.04
+    },
+    {
+      "id": "acba13e4-be19-11ea-b3ff-0242ac130004",
+      "poster": "pkg:/images/icons/monitor.png",
+      "title": "Programas",
+      "duration": 0.05
+    },
+    {
+      "id": "acba13e4-be20-11ea-b3ff-0242ac130004",
+      "poster": "pkg:/images/icons/movie.png",
+      "title": "Películas",
+      "duration": 0.06
+    },
+    {
+      "id": "acba13e4-be21-11ea-b3ff-0242ac130004",
+      "poster": "pkg:/images/icons/plus.png",
+      "title": "Mi lista",
+      "duration": 0.07
+    }
+]

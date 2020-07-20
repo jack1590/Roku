@@ -1,9 +1,10 @@
 sub init()
     m.app = App()
-    m.config = ProfileConfig()
+    m.config = m.app.profileConfig
     m.label = m.top.findNode("questionLabel")
     m.rowList = m.top.findNode("rowlist")
     m.isPosterSelected = true
+    m.rowList.observeField("rowItemSelected", "onRowItemSelected")
 
     requestProfileInformation()
     setInitialValues()
@@ -17,7 +18,6 @@ sub setInitialValues()
     m.rowList.itemSize = m.config.itemSize
     m.rowList.rowItemSize = m.config.rowItemSize
     m.rowList.rowItemSpacing = m.config.rowItemSpacing
-    m.rowList.setFocus(true)
 end sub
 
 sub requestProfileInformation()
@@ -50,3 +50,7 @@ sub togleFocusElement()
     m.rowList.content.getChild(0).getChild(itemFocused).isPosterSelected = not isPosterSelected
 end sub
 
+
+sub onRowItemSelected()
+    m.top.setFocus(false)
+end sub

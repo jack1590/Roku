@@ -27,10 +27,43 @@ function App()
         m.app.design.images.editProfile = "pkg:/images/edit_icon.png"
         m.app.design.images.editProfileActive = "pkg:/images/edit_icon_active.png"
 
+        m.app.design.icons = {}
+        m.app.design.icons.calendar = "pkg:/images/icons/calendar.png"
+        m.app.design.icons.home = "pkg:/images/icons/home.png"
+        m.app.design.icons.monitor = "pkg:/images/icons/monitor.png"
+        m.app.design.icons.movie = "pkg:/images/icons/movie.png"
+        m.app.design.icons.play = "pkg:/images/icons/play.png"
+        m.app.design.icons.plus = "pkg:/images/icons/plus.png"
+        m.app.design.icons.search = "pkg:/images/icons/search.png"
+        m.app.profileConfig = ProfileConfig() 
+
         m.global.addFields({app: m.app})
     end if
 
     return m.app
+end function
+
+function ProfileConfig() as object
+    appProperties = m.app
+    numberProfiles = 5
+    rowItemSizeWidth = 220
+    rowItemSizeHeaight = 410
+    rowItemSpacingX = 50
+
+    rowWidth = (rowItemSizeWidth * numberProfiles) + (rowItemSpacingX * (numberProfiles - 1)) + 30
+    return {
+        itemSize: [rowWidth, rowItemSizeHeaight]
+        rowItemSize: [[rowItemSizeWidth, rowItemSizeHeaight]],
+        rowItemSpacing: [[rowItemSpacingX, 0]],
+        axisY: 500,
+        axisX: ((appProperties.uiResolution.width - rowWidth) / 2),
+        item: {
+            posterSize: rowItemSizeWidth,
+            focusPosterSize: rowItemSizeWidth + 40,
+            layoutTranslation: [rowItemSizeWidth/2 + 10, 10]
+            layoutSpacings: [20, 50]
+        }
+    }
 end function
 
 function createFont(fontName, fontSize)
@@ -50,3 +83,4 @@ function getUIResolution() as object
     
     return m.uiResolution
 end function
+

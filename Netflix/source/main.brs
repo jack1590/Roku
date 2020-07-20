@@ -4,8 +4,7 @@ sub main()
     m.port = CreateObject("roMessagePort")
     screen.setMessagePort(m.port)
     scene = screen.CreateScene("MainScene")
-    scene.backgroundColor="0x000000"
-    scene.backgroundUri = ""
+    scene.backgroundUri = "pkg:/images/DeepSpace.jpg"
 
     screen.show()
     while(true)
@@ -21,6 +20,5 @@ Sub setApplicationTheme()
     app = CreateObject("roAppManager")
     theme = CreateObject("roAssociativeArray")
     theme.BackgroundColor = "#FF00FF"
-    theme.GridScreenBackgroundColor = "#363636" 
     app.SetTheme(theme)
 End Sub

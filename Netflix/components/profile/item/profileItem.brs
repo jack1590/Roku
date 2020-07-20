@@ -1,6 +1,6 @@
 sub init()
     m.app = App()
-    m.config = ProfileConfig()
+    m.config = m.app.profileConfig
     m.itemPoster = m.top.findNode("itemPoster")
     m.title = m.top.findNode("title")
     m.editImagePoster = m.top.findNode("editImagePoster")

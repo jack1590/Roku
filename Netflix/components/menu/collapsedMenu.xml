@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="CollapsedMenu" extends="Group">
+
+    <interface>
+        <function name="expandMenu" />
+        <function name="collapseMenu" />
+    </interface>
+
+    <script type="text/brightscript" uri="collapsedMenu.brs" />
+    <script type="text/brightscript" uri="../common/app.brs" />
+
+    <children>
+
+        <MarkupGrid
+            id = "markupGrid"
+            itemComponentName = "MenuItem" 
+            numColumns = "1" 
+            numRows = "7" 
+            itemSize = "[ 55, 30 ]" 
+            itemSpacing = "[ 0, 50 ]" 
+            drawFocusFeedback = "false" />
+
+    </children>
+</component>
