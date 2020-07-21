@@ -6,8 +6,8 @@
         <function name="collapseMenu" />
     </interface>
 
-    <script type="text/brightscript" uri="collapsedMenu.brs" />
     <script type="text/brightscript" uri="../common/app.brs" />
+    <script type="text/brightscript" uri="collapsedMenu.brs" />
 
     <children>
 
@@ -18,7 +18,8 @@
             numRows = "7" 
             itemSize = "[ 55, 30 ]" 
             itemSpacing = "[ 0, 50 ]" 
-            drawFocusFeedback = "false" />
+            drawFocusFeedback = "false"
+            vertFocusAnimationStyle="floatingFocus" />
 
     </children>
 </component>

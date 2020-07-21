@@ -1,7 +1,7 @@
 sub init()
     m.app = App()
     m.markupGrid = m.top.findNode("markupGrid")
-    m.markupGrid.observeField("itemFocused", "onItemChanged")
+
     requestMenuInformation()
 end sub
 
@@ -13,12 +13,9 @@ end sub
 
 sub showMarkupGrid()
     m.markupGrid.content = m.readMarkupGridTask.content
-
+    m.markupGrid.jumpToItem = 1
 end sub
 
-sub onItemChanged()
-    ?"######## ENTRO";m.markupGrid.itemFocused
-end sub
 
 sub expandMenu()
     m.markupGrid.itemSize = [ 300, 30 ]

@@ -6,6 +6,7 @@
       <field id="itemContent" type="node" onChange="onItemContentChanged"/>
       <field id="focusPercent" type="float" onChange="onItemHasFocus"/>
       <field id="gridHasFocus" type="boolean" onChange="onGridHasFocus"/>
+      <field id="index" type="integer"/>
   </interface>
 
   <script type="text/brightscript" uri="menuItem.brs" />
@@ -19,6 +20,14 @@
         height="30"
         translation="[ 10, 0 ]"/>
 
+    <Rectangle
+        id="redFlag" 
+        width="30"
+        height="5"
+        translation="[ 10 , 35 ]"
+        color="0xE50914"
+        visible="false" />
+
     <Label
       id="title"
       translation="[90, 0]"/>
@@ -26,7 +35,7 @@
     <Animation
       id="animation"
       duration="0.17"
-      easeFunction="inOutQuad"> <!--inOutQuad-->
+      easeFunction="inOutQuad"> 
       <Vector2DFieldInterpolator
           id = "testVector2D"
           key="[0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.3, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]"
