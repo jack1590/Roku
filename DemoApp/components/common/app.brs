@@ -6,11 +6,12 @@ function App()
         ' ## APP PARAMS ##
         appInfo = CreateObject("roAppInfo")
         _host = appInfo.getValue("api_server")
-        m.appInfo.api = {}
+        m.app.api = {}
         m.app.api.host = _host
 
         ' ## FONTS ##
         m.app.fonts = {}
+        m.app.fonts.extralarge = createFont("Demo-Semibold", 90)
         m.app.fonts.large = createFont("Demo-Semibold", 45)
         m.app.fonts.medium = createFont("Demo-Regular", 25)
         m.app.fonts.small = createFont("Demo-Light", 23)

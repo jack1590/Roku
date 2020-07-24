@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="InputEditBox" extends="Group">
+    <interface>
+        <field id="width" type="float" value="300" alias="selector.width,textEditBox.width"/>
+        <field id="hintText" type="string" alias="textEditBox.hintText"/>
+    </interface>
+    <script type="text/brightscript" uri="inputEditBox.brs" />
+    <children>
+        <LayoutGroup
+            id="layoutGroup"
+            layoutDirection="vert"
+            horizAlignment="left"
+            itemSpacings="[10]">
+
+
+            <Rectangle
+                id="selector"
+                color="0xfffae3"
+                height="5"/>
+            <TextEditBox
+                id = "textEditBox"/>
+
+        </LayoutGroup>
+    </children>
+</component>

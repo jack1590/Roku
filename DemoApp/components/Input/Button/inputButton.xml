@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="InputButton" extends="Group">
+
+    <script type="text/brightscript" uri="inputButton.brs" />
+    <children>
+
+        <Rectangle
+            id="selector"
+            translation="[-20,-25]"
+            height="5"/>
+
+        <Poster 
+            id="poster"
+            uri="pkg:/images/buttonRounded.9.png"
+            translation="[-20,-10]">
+        </Poster>
+        <Label 
+            id="label"
+            text="button"
+            color="0x22223b"/>
+
+    </children>
+</component>

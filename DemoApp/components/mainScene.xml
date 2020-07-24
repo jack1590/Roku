@@ -3,6 +3,6 @@
     <script type="text/brightscript" uri="mainScene.brs" />
     <script type="text/brightscript" uri="common/app.brs" />
     <children>
-       
+       <LoginView id="loginView" />
     </children>
 </component>
