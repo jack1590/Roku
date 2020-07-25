@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="MainScene" extends="Scene" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+    <interface>
+        <function name="showSpinner" />
+        <function name="hideSpinner" />
+    </interface>
+
     <script type="text/brightscript" uri="mainScene.brs" />
     <script type="text/brightscript" uri="common/app.brs" />
+
     <children>
-       <LoginView id="loginView" />
+
+        <BusySpinner 
+            id = "busySpinner" 
+            visible = "false" />
+            
+        <LoginView id="loginView" />
+
     </children>
 </component>

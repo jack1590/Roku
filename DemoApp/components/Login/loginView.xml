@@ -27,13 +27,17 @@
                 <InputEditBox 
                     id="password"
                     width="500"
-                    hintText="Password"/>
+                    hintText="Password"
+                    secureMode="true"/>
                 
                 <InputButton
-                    id = "exampleButton"
+                    id = "loginButton"
                     text = "Example Button"/>
                 
-                <Keyboard id = "keyboard" showTextEditBox="false" />
+                <Keyboard 
+                    id = "keyboard" 
+                    showTextEditBox="false" 
+                    visible="false" />
                 
             </LayoutGroup>
     </children>

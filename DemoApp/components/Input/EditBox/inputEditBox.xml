@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="InputEditBox" extends="Group">
     <interface>
+        <field id="selected" type="boolean" value="false"/>
         <field id="width" type="float" value="300" alias="selector.width,textEditBox.width"/>
+        <field id="text" type="string" alias="textEditBox.text"/>
         <field id="hintText" type="string" alias="textEditBox.hintText"/>
+        <field id="secureMode" type="boolean" value="false" alias="textEditBox.secureMode"/>
     </interface>
+
     <script type="text/brightscript" uri="inputEditBox.brs" />
+
     <children>
         <LayoutGroup
             id="layoutGroup"
