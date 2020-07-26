@@ -14,14 +14,13 @@
         <LayoutGroup
             id="layoutGroup"
             layoutDirection="vert"
-            horizAlignment="left"
-            itemSpacings="[10]">
+            horizAlignment="left">
 
 
             <Rectangle
                 id="selector"
-                color="0xfffae3"
-                height="5"/>
+                height="5" />
+
             <TextEditBox
                 id = "textEditBox"/>
 

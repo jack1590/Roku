@@ -29,6 +29,10 @@ function App()
         m.app.design.images.focusedGrid = "pkg:/images/focus_grid.9.png"
         m.app.design.images.spinner = "pkg:/images/busyspinner_hd.png"
 
+        ' ## MESSAGES ##
+        m.app.messages = {}
+        m.app.messages.loginFailed = "Incorrect/Missing Values"
+
         m.global.addFields({app: m.app})
     end if
 

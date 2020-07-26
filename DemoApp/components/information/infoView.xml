@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="InfoView" extends="Group" initialFocus="username">
+    <interface>
+        <field id="previousView" type="string" />
+        <field id="title" type="string" alias="title.text" />
+        <field id="description" type="string" alias="description.text" />
+    </interface>
+
+    <script type="text/brightscript" uri="infoView.brs" />
+    <script type="text/brightscript" uri="../common/app.brs" />
+
+    <children>
+
+        <LayoutGroup 
+            id="layoutGroup"
+            layoutDirection="vert"
+            translation="[100,300]"
+            itemSpacings="[30,70]">
+
+            <Label 
+                id="title" />
+            
+            <Label 
+                id="description" />
+            
+            <InputButton
+                id = "okButton"
+                text = "Ok"/>
+            
+        </LayoutGroup>
+    </children>
+</component>

@@ -9,6 +9,8 @@ end sub
 
 sub setInitialValues()
     m.selector.visible = false
+    m.selector.color = "0xfffae3"
+    m.layoutGroup = [10]
 end sub
 
 sub onFocusChanged()

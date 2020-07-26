@@ -5,6 +5,7 @@
     <field id = "username" type = "string" />
     <field id = "password" type = "string" />
     <field id = "token" type = "string" />
+    <field id = "error" type = "string" />
   </interface>
 
   <script type="text/brightscript" uri="loginTask.brs" />

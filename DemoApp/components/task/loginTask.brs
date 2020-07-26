@@ -23,13 +23,13 @@ sub getToken()
     requestId = request.GetIdentity().ToStr()
     response = handleResponse(didSend, requestId)
 
-    if response <> invalid then
+    if response <> invalid and response.token <> invalid then
         registrySection = CreateObject("roRegistrySection", "demoApp")
         registrySection.Write("apiToken", response.token)
         registrySection.Flush()
         m.top.token = response.token
     else
-        m.top.token = invalid
+        m.top.error = response.message
     end if
 end sub
 

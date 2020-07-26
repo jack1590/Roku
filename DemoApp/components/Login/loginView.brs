@@ -7,12 +7,32 @@ sub init()
     m.layoutGroup = m.top.findNode("layoutGroup")
     m.keyboard = m.top.findNode("keyboard")
     m.textEditSelected = invalid
+    m.config = Config()
+    m.top.observeField("visible", "onVisibleChanged")
 
     setInitialValues()
 end sub
 
+function Config()
+    return {
+        translation: [ 100, 100 ],
+        itemSpacings: [ 100, 30 ],
+        inputWidth: 500
+    }
+end function
+
 sub setInitialValues()
     m.title.font = m.app.fonts.extralarge
+    m.username.width = m.config.inputWidth
+    m.password.width = m.config.inputWidth
+    m.layoutGroup.translation = m.config.translation
+    m.layoutGroup.itemSpacings = m.config.itemSpacings
+end sub
+
+sub onVisibleChanged()
+    if m.top.visible then
+        m.username.setFocus(true)
+    end if
 end sub
 
 function onKeyEvent(key as string, press as boolean) as boolean
@@ -56,8 +76,6 @@ sub handleSelection()
     if m.userName.hasFocus() then m.textEditSelected = m.userName
     if m.password.hasFocus() then m.textEditSelected = m.password
 
-    m.textEditSelected.selected = true
-
     handleEvents()
 end sub
 
@@ -70,12 +88,11 @@ sub handleEvents()
 end sub
 
 sub handleLoginEvent()
-    m.username.text = "user@test.com"
-    m.password.text = "Test123!"
-
     m.top.getScene().callFunc("showSpinner", m.top.id)
     m.loginTask = createObject("roSGNode", "LoginTask")
     m.loginTask.observeField("token", "saveToken")
+    m.loginTask.observeField("error", "onLoginFailed")
+
     m.loginTask.username = m.username.text
     m.loginTask.password = m.password.text
     m.loginTask.control = "RUN"
@@ -90,7 +107,18 @@ sub saveToken()
     end if
 end sub
 
+sub onLoginFailed()
+    m.loginTask.unobserveField("error")
+
+    title = m.app.messages.loginFailed
+    description = m.loginTask.error
+    m.top.getScene().callFunc("displayInfo", m.top.id, title, description)
+end sub
+
 sub handleKeyboardEvent()
+    m.textEditSelected.selected = true
+    m.keyboard.textEditBox.text = m.textEditSelected.text
+    m.keyboard.textEditBox.cursorPosition = m.textEditSelected.text.len()
     m.keyboard.textEditBox.observeField("text", "onTextTyped")
     m.keyboard.visible = true
     m.keyboard.setFocus(true)
