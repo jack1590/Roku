@@ -53,22 +53,47 @@ end sub
 
 sub handleSelection()
     if m.textEditSelected <> invalid then m.textEditSelected.selected = false
+    if m.userName.hasFocus() then m.textEditSelected = m.userName
+    if m.password.hasFocus() then m.textEditSelected = m.password
 
-    if m.userName.hasFocus() then
-        m.textEditSelected = m.userName
-        m.username.selected = true
-    else if m.password.hasFocus() then
-        m.textEditSelected = m.password
-        m.password.selected = true
-    end if
-    
-    if not m.loginButton.hasFocus() then
-        m.keyboard.textEditBox.observeField("text", "onTextTyped")
-        m.keyboard.visible = true
-        m.keyboard.setFocus(true)
+    m.textEditSelected.selected = true
+
+    handleEvents()
+end sub
+
+sub handleEvents()
+    if m.loginButton.hasFocus() then
+        handleLoginEvent()
     else
-        m.top.getScene().callFunc("showSpinner", m.top.id)
+        handleKeyboardEvent()
     end if
+end sub
+
+sub handleLoginEvent()
+    m.username.text = "user@test.com"
+    m.password.text = "Test123!"
+
+    m.top.getScene().callFunc("showSpinner", m.top.id)
+    m.loginTask = createObject("roSGNode", "LoginTask")
+    m.loginTask.observeField("token", "saveToken")
+    m.loginTask.username = m.username.text
+    m.loginTask.password = m.password.text
+    m.loginTask.control = "RUN"
+end sub
+
+sub saveToken()
+    m.loginTask.unobserveField("token")
+
+    if m.loginTask.token <> invalid then
+        m.app.api.apiToken = m.loginTask.token
+        m.top.getScene().callFunc("showHomeView")
+    end if
+end sub
+
+sub handleKeyboardEvent()
+    m.keyboard.textEditBox.observeField("text", "onTextTyped")
+    m.keyboard.visible = true
+    m.keyboard.setFocus(true)
 end sub
 
 sub onTextTyped()

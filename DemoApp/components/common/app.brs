@@ -8,6 +8,8 @@ function App()
         _host = appInfo.getValue("api_server")
         m.app.api = {}
         m.app.api.host = _host
+        m.app.api.apiToken = invalid
+        m.app.api.login = "login"
 
         ' ## FONTS ##
         m.app.fonts = {}

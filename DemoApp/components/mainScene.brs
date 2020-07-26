@@ -1,6 +1,7 @@
 sub init()
    m.app = App()
    m.loginView = m.top.findNode("loginView")
+   m.homeView = m.top.findNode("homeView")
    m.busyspinner = m.top.findNode("busySpinner")
    m.busyspinner.poster.uri = m.app.design.images.spinner
    m.loginView.setFocus(true)
@@ -15,6 +16,8 @@ sub showSpinner(id)
    m.busyspinner.visible = true
 end sub
 
-sub hideSpinner()
+sub showHomeView()
+   m.loginView.visible = false
+   m.homeView.visible = true
    m.busyspinner.visible = false
 end sub

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="HomeView" extends="Group">
+    <interface>
+    </interface>
+
+    <script type="text/brightscript" uri="homeView.brs" />
+    <script type="text/brightscript" uri="../common/app.brs" />
+
+    <children>
+
+        <LayoutGroup 
+            id="layoutGroup"
+            layoutDirection="vert"
+            translation="[100,100]"
+            itemSpacings="[100,30]">
+
+            <Label 
+                id="title" 
+                text="Login"/>
+            
+        </LayoutGroup>
+    </children>
+</component>

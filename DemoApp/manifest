@@ -21,4 +21,4 @@ splash_min_time=1000
 ui_resolutions=fhd
 
 # App params
-api_server=https://rokudemo.azurewebsites.net/
+api_server=https://rokudemo.azurewebsites.net/api/

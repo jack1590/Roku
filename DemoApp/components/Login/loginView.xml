@@ -9,36 +9,36 @@
 
     <children>
 
-            <LayoutGroup 
-                id="layoutGroup"
-                layoutDirection="vert"
-                translation="[100,100]"
-                itemSpacings="[100,30]">
+        <LayoutGroup 
+            id="layoutGroup"
+            layoutDirection="vert"
+            translation="[100,100]"
+            itemSpacings="[100,30]">
 
-                <Label 
-                    id="title" 
-                    text="Login"/>
-                
-                <InputEditBox 
-                    id="username"
-                    width="500"
-                    hintText="Username"/>
+            <Label 
+                id="title" 
+                text="Login"/>
+            
+            <InputEditBox 
+                id="username"
+                width="500"
+                hintText="Username"/>
 
-                <InputEditBox 
-                    id="password"
-                    width="500"
-                    hintText="Password"
-                    secureMode="true"/>
-                
-                <InputButton
-                    id = "loginButton"
-                    text = "Example Button"/>
-                
-                <Keyboard 
-                    id = "keyboard" 
-                    showTextEditBox="false" 
-                    visible="false" />
-                
-            </LayoutGroup>
+            <InputEditBox 
+                id="password"
+                width="500"
+                hintText="Password"
+                secureMode="true"/>
+            
+            <InputButton
+                id = "loginButton"
+                text = "Example Button"/>
+            
+            <Keyboard 
+                id = "keyboard" 
+                showTextEditBox="false" 
+                visible="false" />
+            
+        </LayoutGroup>
     </children>
 </component>
