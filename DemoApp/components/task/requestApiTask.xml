@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="RequestAPITask" extends="Task" >
+    <interface>
+        <field id="action" type="string" onChange="onActionChanged"/>
+        <field id="output" type="node" />
+    </interface>
+
+<script type="text/brightscript" uri="requestApiTask.brs"/>
+<script type="text/brightscript" uri="../common/app.brs" />
+
+</component>

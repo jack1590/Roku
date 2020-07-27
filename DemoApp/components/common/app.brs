@@ -8,8 +8,11 @@ function App()
         _host = appInfo.getValue("api_server")
         m.app.api = {}
         m.app.api.host = _host
-        m.app.api.apiToken = invalid
         m.app.api.login = "login"
+        m.app.api.home = {
+            action: "getVod",
+            resource: "home"
+        }
 
         ' ## FONTS ##
         m.app.fonts = {}
@@ -25,9 +28,24 @@ function App()
 
         ' ## DESIGN ##
         m.app.design = {}
+
+        m.app.design.movies = {}
+        m.app.design.movies.width = 700
+        m.app.design.movies.height = 464
+        m.app.design.movies.intType = 1
+        m.app.design.movies.category = "movie"
+
+        m.app.design.series = {}
+        m.app.design.series.width = 400
+        m.app.design.series.height = 250
+        m.app.design.series.intType = 2
+        m.app.design.series.category = "series"
+
         m.app.design.images = {}
         m.app.design.images.focusedGrid = "pkg:/images/focus_grid.9.png"
         m.app.design.images.spinner = "pkg:/images/busyspinner_hd.png"
+        m.app.design.images.gradient = "pkg:/images/bottomGradient.png"
+        
 
         ' ## MESSAGES ##
         m.app.messages = {}
@@ -57,4 +75,3 @@ function getUIResolution() as object
     
     return m.uiResolution
 end function
-

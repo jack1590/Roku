@@ -2,6 +2,7 @@
 
 <component name="HomeView" extends="Group">
     <interface>
+        <field id="content" type="node" alias="rowlist.content" />
     </interface>
 
     <script type="text/brightscript" uri="homeView.brs" />
@@ -9,16 +10,17 @@
 
     <children>
 
-        <LayoutGroup 
-            id="layoutGroup"
-            layoutDirection="vert"
-            translation="[100,100]"
-            itemSpacings="[100,30]">
+        <Overhang
+            id="header"
+            title="Demo App"
+            showClock="true"
+            showOptions="false"/>
 
-            <Label 
-                id="title" 
-                text="Login"/>
-            
-        </LayoutGroup>
+        <RowList
+            id="rowlist"
+            itemComponentName="RowItem"
+            rowFocusAnimationStyle="fixedFocusWrap"
+            vertFocusAnimationStyle="floatingFocus"/>
+
     </children>
 </component>

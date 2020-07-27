@@ -88,6 +88,9 @@ sub handleEvents()
 end sub
 
 sub handleLoginEvent()
+    m.username.text = "user@test.com"
+    m.password.text = "Test123!"
+
     m.top.getScene().callFunc("showSpinner", m.top.id)
     m.loginTask = createObject("roSGNode", "LoginTask")
     m.loginTask.observeField("token", "saveToken")
@@ -102,7 +105,7 @@ sub saveToken()
     m.loginTask.unobserveField("token")
 
     if m.loginTask.token <> invalid then
-        m.app.api.apiToken = m.loginTask.token
+        m.global.addFields({token: m.loginTask.token})
         m.top.getScene().callFunc("showHomeView")
     end if
 end sub
