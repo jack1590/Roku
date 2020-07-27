@@ -34,7 +34,8 @@ sub createItemContentNode(parent, item)
     baseUrl = item.body.images.tile
     width = m.app.design.[parent.title].width
     height = m.app.design.[parent.title].height
-    posterUrl = createPosterUrl(baseUrl, width, height)
+    size = width.toStr() + "x" + height.toStr()
+    posterUrl = createPosterUrl(baseUrl, size)
 
     itemContent = parent.createChild("ContentNode")
     itemContent.addHeader("Authorization", m.global.token)
@@ -44,6 +45,8 @@ sub createItemContentNode(parent, item)
     itemContent.title = item.body.titles.full
     itemContent.description = item.body.shortSummary
     itemContent.HDPosterUrl = posterUrl
+    itemContent.addField("size", "string", false)
+    itemContent.setField("size", size) 
     if item.body.contentType = "SERIES" then
         itemContent.contentType = m.app.design.series.category
     else
@@ -51,8 +54,7 @@ sub createItemContentNode(parent, item)
     end if
 end sub
 
-function createPosterUrl(baseUrl, width, height) as string
-    size = width.toStr() + "x" + height.toStr()
+function createPosterUrl(baseUrl, size) as string
     compression = "low"
     protection = false
     scaleDownToFit = true

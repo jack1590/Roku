@@ -21,6 +21,10 @@
             itemComponentName="RowItem"
             rowFocusAnimationStyle="fixedFocusWrap"
             vertFocusAnimationStyle="floatingFocus"/>
+        
+        <DetailView
+            id="detailView"
+            visible="false"/>
 
     </children>
 </component>

@@ -1,8 +1,10 @@
 sub init()
     m.app = App()
     m.header = m.top.findNode("header")
+    m.detailView = m.top.findNode("detailView")
     m.rowlist = m.top.findNode("rowlist")
     m.rowlist.observeField("rowItemSelected", "onRowItemSelected")
+    m.gridConfig = GridConfig()
 
     setInitialValues()
 end sub
@@ -10,7 +12,9 @@ end sub
 sub setInitialValues()
     m.header.height = 125
     m.rowlist.setFocus(true)
-    m.rowlist.update(GridConfig())
+    m.rowlist.update(m.gridConfig)
+    m.detailView.translation = m.gridConfig.translation
+    m.detailView.width = m.gridConfig.itemSize[0]
 end sub
 
 function GridConfig() as object
@@ -59,5 +63,37 @@ function SeriesConfig() as object
 end function
 
 sub onRowItemSelected()
+    rowIndex = m.rowlist.rowItemSelected[0]
+    itemIndex = m.rowlist.rowItemSelected[1]
+    itemContent = findDetailContent(rowIndex, itemIndex)
+    showDetailView(itemContent)
 end sub
 
+function findDetailContent(rowIndex, itemIndex)
+    content = m.rowlist.content.getChild(rowIndex).getChild(itemIndex)
+    return content
+end function
+
+sub showDetailView(itemContent)
+    m.detailView.itemContent = itemContent
+    m.detailView.setFocus(true)
+    m.detailView.visible = true
+    m.rowList.visible = false
+end sub
+
+'-----------------------------
+' Key handling
+'-----------------------------
+function onKeyEvent(key as string, press as boolean) as boolean
+    handled = false
+
+    if press then
+        if key = "back" and m.detailView.visible then
+            m.detailView.visible = false
+            m.rowList.visible = true
+            m.rowlist.setFocus(true)
+            handled = true
+        end if
+    end if
+    return handled
+end function

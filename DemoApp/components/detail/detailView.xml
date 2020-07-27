@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="DetailView" extends="Group">
+    <interface>
+        <field id="width" type="float" alias="poster.width, title.width, description.width" />
+        <field id="itemContent" type="node" onChange="onItemContentChanged"/>
+    </interface>
+
+    <script type="text/brightscript" uri="detailView.brs" />
+    <script type="text/brightscript" uri="../common/app.brs" />
+
+    <children>
+            
+            
+            <LayoutGroup
+                id="layoutGroup"
+                layoutDirection="vert"
+                vertAlignment="top"
+                horizAlignment="left"
+                itemSpacings="[30]">
+
+                <Poster
+                    id="poster">
+                    <Poster
+                        id="playButton"
+                        visible="false"/>
+                </Poster>
+
+
+                <Label
+                    id="title"/>
+
+                <Label
+                    id="description"
+                    text="..."
+                    wrap="true"
+                    maxLines="3" />
+
+            </LayoutGroup>
+
+        <Video
+            id="videoPlayer"
+            visible="false"
+            translation="[0, 0]"/>
+        
+        <Dialog
+            id="errorDialog"
+            visible="false"/>
+        
+        <Timer
+            id="timer"
+            duration="3"
+            repeat="false"/>
+    </children>
+</component>

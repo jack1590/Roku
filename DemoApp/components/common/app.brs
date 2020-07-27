@@ -45,11 +45,13 @@ function App()
         m.app.design.images.focusedGrid = "pkg:/images/focus_grid.9.png"
         m.app.design.images.spinner = "pkg:/images/busyspinner_hd.png"
         m.app.design.images.gradient = "pkg:/images/bottomGradient.png"
-        
+        m.app.design.images.play = "pkg:/images/play.png"
 
         ' ## MESSAGES ##
         m.app.messages = {}
         m.app.messages.loginFailed = "Incorrect/Missing Values"
+        m.app.messages.playFailed = "Content unavailable"
+        m.app.messages.playFailedMessage = "Sorry! We are having trouble playing this title right now."
 
         m.global.addFields({app: m.app})
     end if

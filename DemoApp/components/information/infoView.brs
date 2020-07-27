@@ -14,6 +14,6 @@ sub setInitialValues()
 end sub
 
 sub onVisibleChanged()
-    m.okButton.setFocus(true)
+    m.okButton.setFocus(m.top.visible)
 end sub
 
