@@ -51,7 +51,7 @@ function onKeyEvent(key as string, press as boolean) as boolean
 end function
 
 sub onContentReady()
-   content = m.requestApiTask.output
+   content = m.requestApiTask.output.content
    m.homeView.content = content
    m.loginView.visible = false
    m.homeView.visible = true

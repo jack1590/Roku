@@ -13,6 +13,10 @@ function App()
             action: "getVod",
             resource: "home"
         }
+        m.app.api.video = {
+            action: "getVideo",
+            resource: "video/"
+        }
 
         ' ## FONTS ##
         m.app.fonts = {}
@@ -40,6 +44,10 @@ function App()
         m.app.design.series.height = 250
         m.app.design.series.intType = 2
         m.app.design.series.category = "series"
+
+        m.app.design.home = {}
+        m.app.design.home.translationX = 200
+        m.app.design.home.translationY = 160
 
         m.app.design.images = {}
         m.app.design.images.focusedGrid = "pkg:/images/focus_grid.9.png"

@@ -13,13 +13,12 @@ sub setInitialValues()
     m.header.height = 125
     m.rowlist.setFocus(true)
     m.rowlist.update(m.gridConfig)
-    m.detailView.translation = m.gridConfig.translation
     m.detailView.width = m.gridConfig.itemSize[0]
 end sub
 
 function GridConfig() as object
-    translationX = 200
-    translationY = 160
+    translationX = m.app.design.home.translationX
+    translationY = m.app.design.home.translationY
     itemSizeHeight = 464
     movieConfig = MoviesConfig()
     seriesConfig = SeriesConfig()

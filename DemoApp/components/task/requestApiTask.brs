@@ -5,6 +5,7 @@ sub onActionChanged()
 end sub
 
 sub getVod()
+    response = {}
     content = createObject("roSGNode", "ContentNode")
     moviesSection = createSectionNode(content, "Movies")
     seriesSection = createSectionNode(content, "Series")
@@ -21,7 +22,8 @@ sub getVod()
         end if
     end for
 
-    m.top.output = content
+    response.content = content
+    m.top.output = response
 end sub
 
 function createSectionNode(parent, title)
@@ -64,6 +66,11 @@ function createPosterUrl(baseUrl, size) as string
     baseUrl = baseUrl.replace("{{protection}}", protection.toStr())
     return baseUrl.replace("{{scaleDownToFit}}", scaleDownToFit.toStr())
 end function
+
+sub getVideo()
+    videoUrl = m.app.api.host + m.app.api.video.resource + m.top.input
+    m.top.output = getAPI(videoUrl)
+end sub
 
 '*****************************************
 ' Requests

@@ -3,7 +3,8 @@
 <component name="RequestAPITask" extends="Task" >
     <interface>
         <field id="action" type="string" onChange="onActionChanged"/>
-        <field id="output" type="node" />
+        <field id="output" type="assocarray" />
+        <field id="input" type="string" />
     </interface>
 
 <script type="text/brightscript" uri="requestApiTask.brs"/>

@@ -22,11 +22,13 @@ function Config() as object
         topMargin: 450,
         iconWidth: 128,
         iconHeight: 96,
-        videoPlayerColor: "0x"
+        videoPlayerColor: "0xE9FF70",
+        translation: [m.app.design.home.translationX, m.app.design.home.translationY]
     }
 end function
 
 sub setInitialValues()
+    m.layoutGroup.translation = m.Config.translation
     m.poster.height = m.config.posterHeight
 
     m.videoPlayer.width = m.app.uiResolution.width
@@ -72,7 +74,51 @@ sub showPlayButton()
 end sub
 
 sub playContent()
-    
+    itemContent = m.top.itemContent
+    if itemContent <> invalid then
+        m.requetsApiTask = CreateObject("roSGNode", "RequestApiTask")
+        m.requetsApiTask.observeField("output", "onStreamContentReady")
+        m.requetsApiTask.input = itemContent.id
+        m.requetsApiTask.action = m.app.api.video.action
+    end if
+end sub
+
+sub onStreamContentReady()
+    m.requetsApiTask.unobserveField("output")
+    streamInfo = m.requetsApiTask.output
+    streamInfo.id = m.requetsApiTask.input
+
+    if streamInfo <> invalid then
+        setContentToVideoPlayer(streamInfo)
+    end if
+
+    m.channelsApiTask = invalid
+end sub
+
+sub setContentToVideoPlayer(streamInfo)
+    contentNode = createObject("roSGNode", "contentNode")
+    contentNode.streamFormat = streamInfo.videoType
+    contentNode.url = streamInfo.videoUrl
+    contentNode.id = streamInfo.id
+    playbackPosition = getPlaybackPosition(streamInfo.id)
+
+    m.videoPlayer.content = contentNode
+    if playbackPosition <> invalid then m.videoPlayer.seek = playbackPosition
+    m.videoPlayer.control = "play"
+    m.videoPlayer.visible = true
+    m.videoPlayer.setFocus(true)
+
+    m.videoPlayer.observeField("state", "onVideoStateChanged")
+end sub
+
+sub onVideoStateChanged()
+    videoState = m.videoPlayer.state
+    if videoState = "finished" or (videoState = "playing" and m.videoPlayer.errorCode = 0) then
+        m.videoPlayer.unobserveField("state")
+    else if videoState = "error" then
+        stopAndHideVideo()
+        showErrorDialog()
+    end if
 end sub
 
 sub showErrorDialog()
@@ -90,7 +136,20 @@ sub dismissDialog()
 end sub
 
 sub onPositionChanged()
+    savePlaybackPosition()
 end sub
+
+
+sub savePlaybackPosition()
+    positionPlaybackRS = CreateObject("roRegistrySection", "PostionPlayback")
+    positionPlaybackRS.Write(m.videoPlayer.content.id, m.videoPlayer.position.toStr())
+    positionPlaybackRS.Flush()
+end sub
+
+function getPlaybackPosition(contentId as string) as integer
+    positionPlaybackRS = CreateObject("roRegistrySection", "PostionPlayback")
+    return positionPlaybackRS.read(contentId).toInt()
+end function
 
 sub stopAndHideVideo()
     m.videoPlayer.setFocus(false)
