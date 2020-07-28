@@ -7,7 +7,7 @@
         <field id="input" type="string" />
     </interface>
 
-<script type="text/brightscript" uri="requestApiTask.brs"/>
-<script type="text/brightscript" uri="../common/app.brs" />
+    <script type="text/brightscript" uri="requestApiTask.brs"/>
+    <script type="text/brightscript" uri="../common/app.brs" />
 
 </component>

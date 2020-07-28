@@ -33,7 +33,6 @@ sub getToken()
     end if
 end sub
 
-
 function handleResponse(didSend as boolean, requestId as string)
     if didSend then
 		while (true)

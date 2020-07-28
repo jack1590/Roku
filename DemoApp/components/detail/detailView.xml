@@ -12,7 +12,6 @@
 
     <children>
             
-            
             <LayoutGroup
                 id="layoutGroup"
                 layoutDirection="vert"

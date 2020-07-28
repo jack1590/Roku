@@ -67,7 +67,6 @@ function App()
     return m.app
 end function
 
-
 function createFont(fontName, fontSize)
 	font = CreateObject("roSGNode", "Font")
 	font.uri = "pkg:/fonts/" + fontName + ".ttf"

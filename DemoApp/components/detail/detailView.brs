@@ -7,7 +7,7 @@ sub init()
     m.description = m.top.findNode("description")
     m.videoPlayer = m.top.findNode("videoPlayer")
     m.videoPlayer.notificationInterval = 5
-    m.videoPlayer.observeField("position", "onPositionChanged")
+    m.videoPlayer.observeField("position", "savePlaybackPosition")
     m.errorDialog = m.top.findNode("errorDialog")
     m.timer = m.top.findNode("timer")
     m.config = Config()
@@ -28,7 +28,7 @@ function Config() as object
 end function
 
 sub setInitialValues()
-    m.layoutGroup.translation = m.Config.translation
+    m.layoutGroup.translation = m.config.translation
     m.poster.height = m.config.posterHeight
 
     m.videoPlayer.width = m.app.uiResolution.width
@@ -134,11 +134,6 @@ sub dismissDialog()
     m.timer.unobserveField("fire")
     m.top.setFocus(true)
 end sub
-
-sub onPositionChanged()
-    savePlaybackPosition()
-end sub
-
 
 sub savePlaybackPosition()
     positionPlaybackRS = CreateObject("roRegistrySection", "Transient")

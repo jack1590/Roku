@@ -53,7 +53,7 @@ end sub
 
 sub handleSelection()
     if m.textEditSelected <> invalid then m.textEditSelected.selected = false
-    if m.userName.hasFocus() then m.textEditSelected = m.userName
+    if m.userName.hasFocus() then m.textEditSelected = m.username
     if m.password.hasFocus() then m.textEditSelected = m.password
 
     handleEvents()

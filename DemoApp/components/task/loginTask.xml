@@ -2,13 +2,12 @@
 
 <component name="LoginTask" extends="Task" >
     <interface>
-    <field id = "username" type = "string" />
-    <field id = "password" type = "string" />
-    <field id = "token" type = "string" />
-    <field id = "error" type = "string" />
-  </interface>
+        <field id = "username" type = "string" />
+        <field id = "password" type = "string" />
+        <field id = "token" type = "string" />
+        <field id = "error" type = "string" />
+    </interface>
 
-  <script type="text/brightscript" uri="loginTask.brs" />
-  <script type="text/brightscript" uri="../common/app.brs" />
-
+    <script type="text/brightscript" uri="loginTask.brs" />
+    <script type="text/brightscript" uri="../common/app.brs" />
 </component>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <component name="LoginView" extends="Group" initialFocus="username">
-
     <script type="text/brightscript" uri="loginView.brs" />
     <script type="text/brightscript" uri="../common/app.brs" />
 

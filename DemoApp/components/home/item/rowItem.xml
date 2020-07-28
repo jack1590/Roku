@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="RowItem" extends="Group">
 
-  <interface >
-      <field id="itemContent" type="node" onChange="onItemContentChanged"/>
-  </interface>
+    <interface >
+        <field id="itemContent" type="node" onChange="onItemContentChanged"/>
+    </interface>
 
-  <script type="text/brightscript" uri="rowItem.brs" /> 
-  <script type="text/brightscript" uri="../../common/app.brs" />
+    <script type="text/brightscript" uri="rowItem.brs" /> 
+    <script type="text/brightscript" uri="../../common/app.brs" />
 
-  <children>
-    <Poster
-        id="imagePoster"/>
+    <children>
+        <Poster
+            id="imagePoster"/>
 
-    <Poster
-        id="gradientPoster"/>
+        <Poster
+            id="gradientPoster"/>
 
-    <LayoutGroup 
-        id="infoGroup"
-        layoutDirection="vert"
-        horizAlignment="left">
+        <LayoutGroup 
+            id="infoGroup"
+            layoutDirection="vert"
+            horizAlignment="left">
 
-        <ScrollingLabel
-            id="title"
-            vertAlign="bottom"
-            scrollSpeed="0" />
-            
-    </LayoutGroup>
+            <ScrollingLabel
+                id="title"
+                vertAlign="bottom"
+                scrollSpeed="0" />
+                
+        </LayoutGroup>
 
-  </children>
+    </children>
 </component>

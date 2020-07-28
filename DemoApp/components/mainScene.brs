@@ -39,7 +39,6 @@ sub showHomeView()
    m.requestApiTask = CreateObject("roSGNode", "RequestAPITask")
    m.requestApiTask.observeField("output", "onContentReady")
    m.requestApiTask.action = m.app.api.home.action
-
 end sub
 
 sub displayInfo(id as string, title as string, description as string)
