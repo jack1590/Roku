@@ -83,6 +83,7 @@ end sub
 '-----------------------------
 ' Key handling
 '-----------------------------
+
 function onKeyEvent(key as string, press as boolean) as boolean
     handled = false
 

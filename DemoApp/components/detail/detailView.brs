@@ -141,13 +141,13 @@ end sub
 
 
 sub savePlaybackPosition()
-    positionPlaybackRS = CreateObject("roRegistrySection", "PostionPlayback")
+    positionPlaybackRS = CreateObject("roRegistrySection", "Transient")
     positionPlaybackRS.Write(m.videoPlayer.content.id, m.videoPlayer.position.toStr())
     positionPlaybackRS.Flush()
 end sub
 
 function getPlaybackPosition(contentId as string) as integer
-    positionPlaybackRS = CreateObject("roRegistrySection", "PostionPlayback")
+    positionPlaybackRS = CreateObject("roRegistrySection", "Transient")
     return positionPlaybackRS.read(contentId).toInt()
 end function
 

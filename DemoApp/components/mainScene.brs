@@ -5,16 +5,29 @@ sub init()
    m.busyspinner = m.top.findNode("busySpinner")
    m.infoView = m.top.findNode("infoView")
 
+   m.busyspinner.poster.loadSync = true
    m.busyspinner.poster.uri = m.app.design.images.spinner
+
    m.loginView.setFocus(true)
 
+   setInitialValues()
 end sub
 
-sub showSpinner(id)
-   m[id].visible = false
+sub setInitialValues()
    centerx = (m.app.uiResolution.width - m.busyspinner.poster.bitmapWidth) / 2
    centery = (m.app.uiResolution.height - m.busyspinner.poster.bitmapHeight) / 2
    m.busyspinner.translation = [centerx, centery]
+
+   registrySection = CreateObject("roRegistrySection", "Transient")
+   token = registrySection.read("apiToken").toStr()
+   if token <> invalid and token <> "" then
+      m.global.addFields({token: token})
+      showHomeView()
+   end if
+end sub
+
+sub showSpinner(id)
+   if id <> invalid then m[id].visible = false
    m.busyspinner.visible = true
 end sub
 
@@ -37,6 +50,18 @@ sub displayInfo(id as string, title as string, description as string)
    m.infoView.previousView = id
 end sub
 
+sub onContentReady()
+   content = m.requestApiTask.output.content
+   m.homeView.content = content
+   m.loginView.visible = false
+   m.homeView.visible = true
+   m.busyspinner.visible = false
+end sub
+
+'-----------------------------
+' Key handling
+'-----------------------------
+
 function onKeyEvent(key as string, press as boolean) as boolean
    handled = false
    if press then
@@ -49,11 +74,3 @@ function onKeyEvent(key as string, press as boolean) as boolean
    end if
    return handled
 end function
-
-sub onContentReady()
-   content = m.requestApiTask.output.content
-   m.homeView.content = content
-   m.loginView.visible = false
-   m.homeView.visible = true
-   m.busyspinner.visible = false
-end sub

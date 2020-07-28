@@ -35,26 +35,6 @@ sub onVisibleChanged()
     end if
 end sub
 
-function onKeyEvent(key as string, press as boolean) as boolean
-    handled = false
-    if press then
-        if key = "down" then
-            handled = true
-            downEvent()
-        else if key = "up" then
-            handled = true
-            upEvent()
-        else if key = "OK" then
-            handled = true
-            handleSelection()
-        else if key = "back" then
-            handled = true
-            handleBack()
-        end if
-    end if
-    return handled
-end function
-
 sub downEvent()
     if m.userName.hasFocus() then
         m.password.setFocus(true)
@@ -140,3 +120,27 @@ sub handleBack()
         m.textEditSelected.setFocus(true)
     end if
 end sub
+
+'-----------------------------
+' Key handling
+'-----------------------------
+
+function onKeyEvent(key as string, press as boolean) as boolean
+    handled = false
+    if press then
+        if key = "down" then
+            handled = true
+            downEvent()
+        else if key = "up" then
+            handled = true
+            upEvent()
+        else if key = "OK" then
+            handled = true
+            handleSelection()
+        else if key = "back" then
+            handled = true
+            handleBack()
+        end if
+    end if
+    return handled
+end function

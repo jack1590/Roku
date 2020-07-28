@@ -14,7 +14,7 @@ function Config()
     return {
         offsetWidth: 50,
         offsetHeight: 30,
-        color: "0x22223b",
+        color: "0x468847",
         uri: "pkg:/images/buttonRounded.9.png"
     }
 end function

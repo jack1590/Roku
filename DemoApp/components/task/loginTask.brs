@@ -24,7 +24,7 @@ sub getToken()
     response = handleResponse(didSend, requestId)
 
     if response <> invalid and response.token <> invalid then
-        registrySection = CreateObject("roRegistrySection", "demoApp")
+        registrySection = CreateObject("roRegistrySection", "Transient")
         registrySection.Write("apiToken", response.token)
         registrySection.Flush()
         m.top.token = response.token
