@@ -9,6 +9,8 @@ end sub
 sub onItemContentChanged()
     itemContent = m.top.itemContent
     m.imagePoster.uri = itemContent.HDPosterUrl
+    m.imagePoster.width = itemContent.width
+    m.imagePoster.height = itemContent.height
 
     createPoster(m.gradientPoster, m.app.design.images.gradient, itemContent.contentType)
     setLabelsProperties(itemContent.title)

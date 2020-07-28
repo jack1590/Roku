@@ -47,6 +47,11 @@ sub createItemContentNode(parent, item)
     itemContent.title = item.body.titles.full
     itemContent.description = item.body.shortSummary
     itemContent.HDPosterUrl = posterUrl
+
+    itemContent.addField("width", "float", false)
+    itemContent.setField("width", width)
+    itemContent.addField("height", "float", false)
+    itemContent.setField("height", height) 
     itemContent.addField("size", "string", false)
     itemContent.setField("size", size) 
     if item.body.contentType = "SERIES" then
