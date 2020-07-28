@@ -4,6 +4,8 @@ sub init()
     m.detailView = m.top.findNode("detailView")
     m.rowlist = m.top.findNode("rowlist")
     m.rowlist.observeField("rowItemSelected", "onRowItemSelected")
+    m.movieConfig = MoviesConfig()
+    m.serieConfig = SeriesConfig()
     m.gridConfig = GridConfig()
 
     setInitialValues()
@@ -20,13 +22,11 @@ function GridConfig() as object
     translationX = m.app.design.home.translationX
     translationY = m.app.design.home.translationY
     itemSizeHeight = 464
-    movieConfig = MoviesConfig()
-    seriesConfig = SeriesConfig()
     itemSizeWidth = m.app.uiResolution.width - (translationX * 2)
 
     return {
         focusBitmapUri: m.app.design.images.focusedGrid,
-        rowItemSize: [[movieConfig.width, movieConfig.height], [seriesConfig.width, seriesConfig.height]],
+        rowItemSize: [[m.movieConfig.width, m.movieConfig.height], [m.serieConfig.width, m.serieConfig.height]],
         rowLabelFont: m.app.fonts.small,
         translation: [translationX, translationY],
         itemSize: [itemSizeWidth, itemSizeHeight],
@@ -78,6 +78,61 @@ sub showDetailView(itemContent)
     m.detailView.setFocus(true)
     m.detailView.visible = true
     m.rowList.visible = false
+end sub
+
+sub executeDeeplink()
+    deeplink = m.top.deeplink
+    section = m.serieConfig.section
+    isDeepLink = true
+    if deeplink.mediaType = m.app.design.movies.category then
+        section = m.movieConfig.section
+    end if
+
+    if m.rowlist.content <> invalid then
+        content = getContentById(deeplink.contentId, section)
+        if content <> invalid then
+            showDetailView(content)
+        else
+            ?"[Log error] Content with id ";deeplink.contentId;" not found!"
+        end if
+
+        if isDeepLink then m.detailView.isDeepLink = true
+        m.pendingDeeplink = false
+        
+    else
+        m.rowlist.observeField("content", "onRowlistContentUpdated")
+        m.pendingDeeplink = true
+    end if
+end sub
+
+function getContentById(contentId as string, sectionTitle as string) as object
+    rowlistContent = m.rowlist.content
+    if rowlistContent <> invalid then
+        for i = 0 to rowlistContent.getChildCount() - 1
+            section = rowlistContent.getChild(i)
+            if section.title = sectionTitle then
+                for j = 0 to section.getChildCount() - 1
+                    item = section.getChild(j)
+                    if item.id = contentId then
+                        updateDetailItemIndexes(i, j)
+                        return item
+                    end if
+                end for
+            end if
+        end for
+    end if
+
+    return invalid
+end function
+
+sub updateDetailItemIndexes(rowIndex, itemIndex)
+    m.detailItemIndexes = [rowIndex, itemIndex]
+    m.rowlist.jumpToItem = itemIndex
+end sub
+
+sub onRowlistContentUpdated()
+    if m.pendingDeeplink then executeDeeplink()
+    m.rowlist.unobserveField("content")
 end sub
 
 '-----------------------------

@@ -59,6 +59,25 @@ sub onContentReady()
 end sub
 
 '-----------------------------
+' Deep link implementation
+'-----------------------------
+
+sub handleDeeplink()
+   ?"[Log Info] Handle deeplink: ";m.top.deeplink
+    deeplink = m.top.deeplink
+    seriesCategory = m.app.design.series.category 
+    movieCategory = m.app.design.movies.category 
+
+    if deeplink <> invalid then
+        if deeplink.mediaType = seriesCategory or deeplink.mediaType = movieCategory then
+            m.homeView.deeplink = deeplink
+        else
+            ?"[Log error] Deep link with media type ";deeplink.mediaType;" not supported yet!"
+        end if
+    end if
+end sub
+
+'-----------------------------
 ' Key handling
 '-----------------------------
 

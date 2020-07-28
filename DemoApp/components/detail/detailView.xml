@@ -4,6 +4,7 @@
     <interface>
         <field id="width" type="float" alias="poster.width, title.width, description.width" />
         <field id="itemContent" type="node" onChange="onItemContentChanged"/>
+        <field id="isDeepLink" type="boolean" onChange="playContent" alwaysNotify="true" />
     </interface>
 
     <script type="text/brightscript" uri="detailView.brs" />

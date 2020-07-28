@@ -3,6 +3,7 @@
 <component name="HomeView" extends="Group">
     <interface>
         <field id="content" type="node" alias="rowlist.content" />
+        <field id="deepLink" type="assocArray" onChange="executeDeeplink" />
     </interface>
 
     <script type="text/brightscript" uri="homeView.brs" />
