@@ -2,6 +2,7 @@
 <component name="CollapsedMenu" extends="Group">
 
     <interface>
+        <field id="profile" type="node" onChange="onProfileChanged" />
         <function name="expandMenu" />
         <function name="collapseMenu" />
     </interface>
@@ -11,8 +12,22 @@
 
     <children>
 
+        <LayoutGroup
+            id="perfilGroup"
+            horizAlignment="left"
+            translation="[90, 100]">
+            
+            <Poster 
+                id="profileImage"
+                width="40"
+                height="40"
+                visible="false"/>
+
+        </LayoutGroup>
+
         <MarkupGrid
             id = "markupGrid"
+            translation="[0, 300]"
             itemComponentName = "MenuItem" 
             numColumns = "1" 
             numRows = "7" 

@@ -11,6 +11,7 @@ end sub
 sub onProfileFocusChanged()
     if not m.profileScreen.isInFocusChain() then
         m.profileScreen.visible = false
+        m.principalScreen.selectedProfile = m.profileScreen.selectedProfile
         m.principalScreen.visible = true
         m.principalScreen.setFocus(true)
     end if

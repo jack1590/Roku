@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="PrincipalScreen" extends="Group" initialFocus="label">
 
+  <interface>
+    <field id="selectedProfile" type="node" alias="collapsedMenu.profile" />
+  </interface>
+
   <script type="text/brightscript" uri="principalScreen.brs" />
   <script type="text/brightscript" uri="../common/app.brs" />
 
@@ -20,7 +24,7 @@
 
         <CollapsedMenu 
           id="collapsedMenu" 
-          translation="[0,300]"/>
+          translation="[0,0]"/>
 
     </LayoutGroup>
       

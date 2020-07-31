@@ -52,5 +52,7 @@ end sub
 
 
 sub onRowItemSelected()
+    itemSelected = m.rowList.rowItemSelected
+    m.top.selectedProfile = m.rowList.content.getChild(itemSelected[0]).getChild(itemSelected[1])
     m.top.setFocus(false)
 end sub

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="ProfileScreen" extends="Group" initialFocus="rowlist">
+
+    <interface>
+        <field id="selectedProfile" type="node" />
+    </interface>
+
     <script type="text/brightscript" uri="profileScreen.brs" />
     <script type="text/brightscript" uri="../common/app.brs" />
     <children>
